@@ -7,37 +7,37 @@ const bookings = [
     {
         id: 1,
         name: "Teeth Orthodontics",
-        date: "8:00 AM - 9:00 AM",
+        time: "8:00 AM - 9:00 AM",
         space: 10
     },
     {
         id: 2,
         name: "Cosmetic Dentistry",
-        date: "10:05 AM - 11:30 AM",
+        time: "10:05 AM - 11:30 AM",
         space: 10
     },
     {
         id: 3,
         name: "Teeth Cleaning",
-        date: "5:00 AM - 6:30 AM",
+        time: "5:00 AM - 6:30 AM",
         space: 10
     },
     {
         id: 4,
         name: "Cavity Protection",
-        date: "7:00 AM - 8:30 AM",
+        time: "7:00 AM - 8:30 AM",
         space: 10
     },
     {
         id: 5,
         name: "Pediatric Dental",
-        date: "06:00 AM - 07:00 AM",
+        time: "06:00 AM - 07:00 AM",
         space: 10
     },
     {
-        id: 6,
+        id: 5,
         name: "Oral Surgery",
-        date: "07:00 AM - 08:00 AM",
+        time: "07:00 AM - 08:00 AM",
         space: 10
     },
 ]
@@ -54,6 +54,7 @@ const AvailableAppointments = ({ date }) => {
                     bookings.map(booking => <Booking
                         keys={booking.id}
                         booking={booking}
+                        date={date}
                     >
                     </Booking>)
                 }
