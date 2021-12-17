@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, NavLink } from 'react-router-dom';
-import { useRouteMatch } from 'react-router-dom/cjs/react-router-dom.min';
 import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
