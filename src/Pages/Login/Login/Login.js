@@ -8,7 +8,7 @@ import Alert from '@mui/material/Alert';
 
 const Login = () => {
     const [loginData, setLoginDate] = useState({});
-    const { user, loginUser, authError, isLoading } = useAuth()
+    const { user, loginUser, authError, isLoading, singInWithGoogle } = useAuth()
 
     const location = useLocation()
     const history = useHistory();
@@ -19,11 +19,13 @@ const Login = () => {
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
         setLoginDate(newLoginData);
-
     }
     const handleLoginSubmit = e => {
-        loginUser(loginData.email, loginData.password,location,history);
+        loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
+    }
+    const handleGoogleSignIn = () => {
+        singInWithGoogle(location,history);
     }
     return (
         <Container>
@@ -59,7 +61,8 @@ const Login = () => {
                         {user?.email && <Alert severity="success">User Login Successfully!</Alert>}
                         {authError && <Alert severity="error">{authError}</Alert>}
                     </form>
-
+                    <p>---------------------</p>
+                    <Button onClick={handleGoogleSignIn} variant="contained">Google Sign in</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <img style={{ width: '100%' }} src={login} alt="" />
