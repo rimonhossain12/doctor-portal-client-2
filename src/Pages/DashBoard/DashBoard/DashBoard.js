@@ -36,10 +36,10 @@ function DashBoard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link style={{ textDecoration: 'none', color: 'white' }} to="/appointment">
-                <Button color="inherit">Appointment</Button>
-            </Link>
-            <List>
+              <List>
+                <Link to="/appointment">
+                    <Button color="inherit">Appointment</Button>
+                </Link>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
@@ -74,9 +74,6 @@ function DashBoard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        DashBoard
-                    </Typography>
                 </Toolbar>
             </AppBar>
             <Box
@@ -85,6 +82,9 @@ function DashBoard(props) {
                 aria-label="mailbox folders"
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+                <Link to="/appointment">
+                    <Button variant="text">Appointment</Button>
+                </Link>
                 <Drawer
                     container={container}
                     variant="temporary"
@@ -93,6 +93,7 @@ function DashBoard(props) {
                     ModalProps={{
                         keepMounted: true, // Better open performance on mobile.
                     }}
+
                     sx={{
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },

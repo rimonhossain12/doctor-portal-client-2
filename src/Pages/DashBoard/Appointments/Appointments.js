@@ -14,6 +14,7 @@ const Appointments = ({ date }) => {
 
     useEffect(() => {
         const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`;
+        console.log(url);
         fetch(url)
             .then(res => res.json())
             .then(data => setAppointments(data));

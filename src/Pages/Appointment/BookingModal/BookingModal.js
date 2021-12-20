@@ -31,6 +31,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
         const value = e.target.value;
         const newInfo = { ...bookingInfo };
         newInfo[field] = value;
+        console.log(newInfo);
         setBookingInfo(newInfo);
     }
 
