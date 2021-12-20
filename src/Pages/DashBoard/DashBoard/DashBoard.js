@@ -16,23 +16,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { Button } from '@mui/material';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import DashBoardHome from '../DashBoardHome/DashBoardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddDoctor from '../AddDoctor/AddDoctor';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 200;
 
 function DashBoard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    // console.log(date);
+    const {admin} = useAuth();
     let { path, url } = useRouteMatch();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -46,15 +45,11 @@ function DashBoard(props) {
                 <Link to="/appointment">
                     <Button color="inherit">Appointment</Button>
                 </Link>
-                <Link to={`${url}`}>
-                    <Button color="inherit">Dashboard</Button>
-                <Link to={`${url}/makeAdmin`}>
-                    <Button color="inherit">Make Admin</Button>
-                </Link>
-                </Link>
-                <Link to={`${url}/addDoctor`}>
-                    <Button color="inherit">Add Doctor</Button>
-                </Link>
+                <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
+               {admin&& <Box>
+                    <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+                    <Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link>
+                   </Box>}
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
