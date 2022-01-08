@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
+import { button } from '@mui/material';
 
 const Appointments = ({ date }) => {
     const { user } = useAuth();
@@ -27,8 +29,8 @@ const Appointments = ({ date }) => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Service</TableCell>
                             <TableCell align="right">Time</TableCell>
+                            <TableCell align="right">Service</TableCell>
                             <TableCell align="right">Action</TableCell>
                         </TableRow>
                     </TableHead>
@@ -38,9 +40,13 @@ const Appointments = ({ date }) => {
                                 key={row._id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">{row.patientName}</TableCell>
-                                <TableCell component="th" scope="row">{row.serviceName}</TableCell>
-                                <TableCell align="right">{row.time}</TableCell>
+                                <TableCell align='right' component="th" scope="row">{row.patientName}</TableCell>
+                                <TableCell  align="right">{row.time}</TableCell>
+                                <TableCell align='right' component="th" scope="row">{row.serviceName}</TableCell>
+                                <TableCell align='right' component="th" scope="row">{row.payment ?
+                                 'Paid' :
+                                    <Link to={`/dashboard/payment/:${row._id}`}> <button>Pay</button> </Link>
+                                  }</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
