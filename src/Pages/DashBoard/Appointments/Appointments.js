@@ -45,7 +45,7 @@ const Appointments = ({ date }) => {
                                 <TableCell align='right' component="th" scope="row">{row.serviceName}</TableCell>
                                 <TableCell align='right' component="th" scope="row">{row.payment ?
                                  'Paid' :
-                                    <Link to={`/dashboard/payment/:${row._id}`}> <button>Pay</button> </Link>
+                                    <Link to={`/dashboard/payment/${row._id}`}> <button>Pay</button> </Link>
                                   }</TableCell>
                             </TableRow>
                         ))}
