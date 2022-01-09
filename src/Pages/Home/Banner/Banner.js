@@ -21,7 +21,7 @@ const bannerBackground = {
     })
 
     useEffect(() => {
-    const url = `http://localhost:5000/users/${email}`;
+    const url = `https://intense-sands-68262.herokuapp.com/users/${email}`;
     fetch(url)
     .then(res => res.json())
     .then(data => console.log(data));
